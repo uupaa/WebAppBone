@@ -1,6 +1,5 @@
 import { BoneApp } from "./Bone/BoneApp"
 import { BoneView } from "./Bone/BoneView"
-import { create_scoped_fragment } from "./Util/DOMUtil"
 
 export const MSG_VIEW_UPDATE = "MSG_VIEW_UPDATE"
 
@@ -37,7 +36,7 @@ export class View extends BoneView {
   override async _render() {
   }
 
-  override _build(root_node:HTMLElement, cn:string):HTMLElement {
+  override _build() {
     const HTML = `
 <div class="menu">Hello</div>
 <div class="content">World!</div>
@@ -56,6 +55,6 @@ export class View extends BoneView {
 .menu        { grid-area: MENU;    outline: solid 1px blue; color: blue; }
 .content     { grid-area: CONTENT; outline: solid 1px blue; color: blue; }
 `
-    return create_scoped_fragment(root_node, cn, HTML, CSS)
+    return [ HTML, CSS ]
   }
 }

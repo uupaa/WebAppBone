@@ -58,7 +58,8 @@ export class BoneView implements MessageSubscriber {
   async update() {
     if (!this._render_count) { // at first? -> create dom tree
       // <div class="class_name"><stype>@scope{ ... }</style> ... </div>
-      this._root_node = this._build(this._root_node, this._class_name)
+      const [ HTML, CSS ] = this._build()
+      this._root_node = create_scoped_fragment(this._root_node, this._class_name, HTML, CSS)
       await this._render_init()
     }
     await this._render()
@@ -74,7 +75,7 @@ export class BoneView implements MessageSubscriber {
   protected focus() {
     // 画面切り替えやTab切り替えなどでフォーカスを与えたい要素がある場合は、このメソッドをオーバーライドし設定する
   }
-  protected _build(root_node:HTMLElement, cn:ClassNameString):HTMLElement {
-    return create_scoped_fragment(root_node, cn, MOCK_HTML, MOCK_CSS)
+  protected _build():Array<string> {
+    return [ MOCK_HTML, MOCK_CSS ]
   }
 }
