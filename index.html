@@ -1,0 +1,17 @@
+<!DOCTYPE html><html lang="en"><head>
+<title></title>
+<style>
+@import url(test/theme.css);
+html, body { margin: 0; padding: 0; width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<div id="View"></div>
+<script type="module">
+import { App } from "./lib/App.esm.js"
+const app = new App()
+app.init(document.body.querySelector("#View"))
+app.run()
+</script>
+</body>
+</html> 

@@ -1,0 +1,50 @@
+{
+  "name": "webappbone",
+  "version": "0.0.1",
+  "description": "WebApp bone.",
+  "keywords": [],
+  "author": "uupaa.js@gmail.com",
+  "license": "MIT",
+  "main": "lib/App.js",
+  "types": "lib/App.d.ts",
+  "rollup": {
+    "esm": {
+      "input": "lib/App.js",
+      "output": "lib/App.esm.js"
+    },
+    "cjs": {
+      "input": "lib/App.js",
+      "output": "lib/App.cjs.js"
+    }
+  },
+  "scripts": {
+    "w": "tsc-watch --onSuccess \"rollup -c .rollup.mjs\"",
+    "b": "tsc --build tsconfig.json",
+    "bundle": "npm run bundle:esm",
+    "bundle:esm": "rollup -c .rollup.mjs",
+    "bundle:cjs": "rollup -c .rollup.cjs.js",
+    "update": "ncu -u; npm i",
+    "test": "GoLive on, start browser, npm run test",
+    "test:server": "json-server --watch test/json-server.db.json -p 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uupaa/WebAppBone.git"
+  },
+  "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
+    "babel-eslint": "^10.0.3",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "eslint": "^9.9.0",
+    "rollup": "^4.20.0",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-license": "^3.5.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-watch": "^3.2.2",
+    "tsc-watch": "^6.2.0",
+    "typescript": "^5.5.4"
+  }
+}
